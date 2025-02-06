@@ -1,125 +1,153 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static final lightTheme = _buildTheme(Brightness.light);
-  static final darkTheme = _buildTheme(Brightness.dark);
-
-  // Função para evitar repetição de lógica
-  static ThemeData _buildTheme(Brightness brightness) {
-    final isLight = brightness == Brightness.light;
-
-    return ThemeData(
-      useMaterial3: true,
-      fontFamily: 'Roboto',
-      colorScheme: _buildColorScheme(brightness),
-      appBarTheme: _buildAppBarTheme(isLight),
-      textTheme: _buildTextTheme(isLight),
-      elevatedButtonTheme: _buildElevatedButtonTheme(isLight),
-      primaryColor: Colors.green,
-      inputDecorationTheme: _buildInputDecorationTheme(isLight),
-      bottomNavigationBarTheme: _buildBottomNavigationBarTheme(isLight),
-      scaffoldBackgroundColor: isLight ? Colors.white : const Color(0xFF2E3440),
-    );
-  }
-
-  // ColorScheme
-  static ColorScheme _buildColorScheme(Brightness brightness) {
-    return ColorScheme.fromSeed(
+  static final ThemeData lightTheme = ThemeData(
+    useMaterial3: true,
+    fontFamily: 'Roboto',
+    colorScheme: ColorScheme.fromSeed(
       seedColor: Colors.green,
-      brightness: brightness,
-    );
-  }
-
-  // AppBarTheme
-  static AppBarTheme _buildAppBarTheme(bool isLight) {
-    return AppBarTheme(
+      brightness: Brightness.light,
+    ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Color(0xfffafcfb),
       titleTextStyle: TextStyle(
         fontFamily: 'Roboto',
-        color: isLight ? Colors.green : const Color(0xFFD5FFC2),
+        color: Colors.green,
         fontWeight: FontWeight.bold,
         fontSize: 20,
       ),
       iconTheme: IconThemeData(
-        color: isLight ? Colors.green : const Color(0xFFD5FFC2),
+        color: Colors.green,
       ),
-    );
-  }
-
-  // TextTheme
-  static TextTheme _buildTextTheme(bool isLight) {
-    return TextTheme(
+    ),
+    textTheme: const TextTheme(
       bodyMedium: TextStyle(
         fontFamily: 'Roboto',
         fontSize: 16,
-        color: isLight
-            ? Colors.black87
-            : Colors.white.withAlpha(178), // 70% opacidade
+        color: Colors.black87,
       ),
       bodyLarge: TextStyle(
         fontFamily: 'Roboto',
         fontSize: 18,
-        color: isLight ? Colors.black : Colors.white,
+        color: Colors.black,
       ),
       titleLarge: TextStyle(
         fontFamily: 'Roboto',
         fontWeight: FontWeight.bold,
         fontSize: 24,
-        color: isLight ? Colors.black : Colors.white,
+        color: Colors.black,
       ),
-    );
-  }
-
-  // ElevatedButtonTheme
-  static ElevatedButtonThemeData _buildElevatedButtonTheme(bool isLight) {
-    return ElevatedButtonThemeData(
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: WidgetStateProperty.resolveWith((states) {
-          return isLight
-              ? const Color(0xFFABF4B0) // Fundo para modo claro
-              : const Color(0xFFD5FFC2); // Fundo para modo escuro
-        }),
-        foregroundColor: WidgetStateProperty.resolveWith((states) {
-          return Colors.black
-              .withAlpha(178); // Texto preto no modo claro e escuro
-        }),
-        textStyle: WidgetStateProperty.all(
+        backgroundColor: MaterialStateProperty.all(const Color(0xFFABF4B0)),
+        foregroundColor: MaterialStateProperty.all(
+          Colors.black.withAlpha(178),
+        ),
+        textStyle: MaterialStateProperty.all(
           const TextStyle(
             fontFamily: 'Roboto',
             fontWeight: FontWeight.bold,
             fontSize: 16,
           ),
         ),
-        shape: WidgetStateProperty.all(
+        shape: MaterialStateProperty.all(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8), // Bordas arredondadas
+            borderRadius: BorderRadius.circular(8),
           ),
         ),
-        minimumSize: WidgetStateProperty.all(
-          const Size(double.infinity, 50), // Largura e altura padrão
+        minimumSize: MaterialStateProperty.all(
+          const Size(double.infinity, 50),
         ),
       ),
-    );
-  }
-
-  // InputDecorationTheme
-  static InputDecorationTheme _buildInputDecorationTheme(bool isLight) {
-    return InputDecorationTheme(
-      fillColor:
-          isLight ? Colors.white : Colors.black.withAlpha(13), // 5% opacidade
+    ),
+    primaryColor: Colors.green,
+    inputDecorationTheme: const InputDecorationTheme(
+      fillColor: Colors.white,
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.green, width: 2),
       ),
-    );
-  }
-
-  // BottomNavigationBarTheme
-  static BottomNavigationBarThemeData _buildBottomNavigationBarTheme(
-      bool isLight) {
-    return BottomNavigationBarThemeData(
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: Colors.black,
       unselectedItemColor: Colors.black.withAlpha(128),
-      backgroundColor:
-          isLight ? const Color(0xFFABF4B0) : const Color(0xFFD5FFC2),
-    );
-  }
+      backgroundColor: const Color(0xFFABF4B0),
+    ),
+    scaffoldBackgroundColor: Colors.white,
+  );
+
+  static final ThemeData darkTheme = ThemeData(
+    useMaterial3: true,
+    fontFamily: 'Roboto',
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: Colors.green,
+      brightness: Brightness.dark,
+    ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Color(0xFF2E3440),
+      titleTextStyle: TextStyle(
+        fontFamily: 'Roboto',
+        color: Color(0xFFD5FFC2),
+        fontWeight: FontWeight.bold,
+        fontSize: 20,
+      ),
+      iconTheme: IconThemeData(
+        color: Color(0xFFD5FFC2),
+      ),
+    ),
+    textTheme: const TextTheme(
+      bodyMedium: TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 16,
+        color: Colors.white70,
+      ),
+      bodyLarge: TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 18,
+        color: Colors.white,
+      ),
+      titleLarge: TextStyle(
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.bold,
+        fontSize: 24,
+        color: Colors.white,
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(const Color(0xFFD5FFC2)),
+        foregroundColor: MaterialStateProperty.all(
+          Colors.black.withAlpha(178),
+        ),
+        textStyle: MaterialStateProperty.all(
+          const TextStyle(
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+        ),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        minimumSize: MaterialStateProperty.all(
+          const Size(double.infinity, 50),
+        ),
+      ),
+    ),
+    primaryColor: Colors.green,
+    inputDecorationTheme: const InputDecorationTheme(
+      fillColor: Colors.black12,
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.green, width: 2),
+      ),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.white54,
+      backgroundColor: const Color(0xFFD5FFC2),
+    ),
+    scaffoldBackgroundColor: const Color(0xFF2E3440),
+  );
 }
