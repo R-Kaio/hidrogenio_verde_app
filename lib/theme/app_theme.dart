@@ -40,23 +40,23 @@ class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(const Color(0xFFABF4B0)),
-        foregroundColor: MaterialStateProperty.all(
+        backgroundColor: WidgetStateProperty.all(const Color(0xFFABF4B0)),
+        foregroundColor: WidgetStateProperty.all(
           Colors.black.withAlpha(178),
         ),
-        textStyle: MaterialStateProperty.all(
+        textStyle: WidgetStateProperty.all(
           const TextStyle(
             fontFamily: 'Roboto',
             fontWeight: FontWeight.bold,
             fontSize: 16,
           ),
         ),
-        shape: MaterialStateProperty.all(
+        shape: WidgetStateProperty.all(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
         ),
-        minimumSize: MaterialStateProperty.all(
+        minimumSize: WidgetStateProperty.all(
           const Size(double.infinity, 50),
         ),
       ),
@@ -115,23 +115,23 @@ class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(const Color(0xFFD5FFC2)),
-        foregroundColor: MaterialStateProperty.all(
+        backgroundColor: WidgetStateProperty.all(const Color(0xFFD5FFC2)),
+        foregroundColor: WidgetStateProperty.all(
           Colors.black.withAlpha(178),
         ),
-        textStyle: MaterialStateProperty.all(
+        textStyle: WidgetStateProperty.all(
           const TextStyle(
             fontFamily: 'Roboto',
             fontWeight: FontWeight.bold,
             fontSize: 16,
           ),
         ),
-        shape: MaterialStateProperty.all(
+        shape: WidgetStateProperty.all(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
         ),
-        minimumSize: MaterialStateProperty.all(
+        minimumSize: WidgetStateProperty.all(
           const Size(double.infinity, 50),
         ),
       ),
@@ -144,8 +144,8 @@ class AppTheme {
       ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.white54,
+      selectedItemColor: Colors.black,
+      unselectedItemColor: Colors.black.withAlpha(128),
       backgroundColor: const Color(0xFFD5FFC2),
     ),
     scaffoldBackgroundColor: const Color(0xFF2E3440),
