@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ResultadosScreen extends StatelessWidget {
-  const ResultadosScreen({super.key});
+class PendenteScreen extends StatelessWidget {
+  const PendenteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class ResultadosScreen extends StatelessWidget {
         onPressed: () => Navigator.pop(context),
       ),
       title: Text(
-        'Resultados',
+        'Pendentes',
         style: TextStyle(
           color: Theme.of(context).brightness == Brightness.light
               ? Colors.green
@@ -61,7 +61,7 @@ class ResultadosScreen extends StatelessWidget {
           padding: const EdgeInsets.all(36.0),
           child: ElevatedButton(
             onPressed: () {
-              debugPrint('Atualizando resultados...');
+              debugPrint('Atualizando pendentes...');
             },
             style: theme.elevatedButtonTheme.style,
             child: const Text('Atualizar'),

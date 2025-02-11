@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'pendente_screen.dart';
 
 class AuditorScreen extends StatefulWidget {
   final VoidCallback onToggleTheme;
@@ -18,9 +19,22 @@ class _AuditorScreenState extends State<AuditorScreen> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index == 0 || index == 2) {
+      setState(() {
+        _selectedIndex = index;
+      });
+    } else {
+      _navigateToScreen(index);
+    }
+  }
+
+  void _navigateToScreen(int index) {
+    if (index == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => PendenteScreen()),
+      );
+    }
   }
 
   @override
@@ -39,48 +53,7 @@ class _AuditorScreenState extends State<AuditorScreen> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: TextField(
-                cursorColor: theme.textTheme.bodyLarge?.color,
-                style: TextStyle(color: theme.textTheme.bodyLarge?.color),
-                decoration: InputDecoration(
-                  hintText: 'ex: lote 001',
-                  hintStyle: TextStyle(color: theme.textTheme.bodyLarge?.color),
-                  filled: true,
-                  fillColor: theme.inputDecorationTheme.fillColor,
-                  prefixIcon: Icon(Icons.search,
-                      color: theme.textTheme.bodyLarge?.color),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  focusedBorder: theme.inputDecorationTheme.focusedBorder,
-                ),
-              ),
-            ),
-            const SizedBox(height: 16),
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                children: [
-                  _buildCard(theme, 'Solicitações de Emissões:', 'EMISSÕES'),
-                  const SizedBox(height: 16),
-                  _buildCard(theme, 'Solicitações de Transferência:',
-                      'TRANSFERÊNCIAS'),
-                  const SizedBox(height: 16),
-                  _buildCard(
-                      theme, 'Solicitações Cancelamentos:', 'CANCELAMENTOS'),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+      body: _buildMainScreen(theme),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: theme.bottomNavigationBarTheme.backgroundColor,
@@ -100,6 +73,51 @@ class _AuditorScreenState extends State<AuditorScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
             label: 'Verificação',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMainScreen(ThemeData theme) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: TextField(
+              cursorColor: theme.textTheme.bodyLarge?.color,
+              style: TextStyle(color: theme.textTheme.bodyLarge?.color),
+              decoration: InputDecoration(
+                hintText: 'ex: lote 001',
+                hintStyle: TextStyle(color: theme.textTheme.bodyLarge?.color),
+                filled: true,
+                fillColor: theme.inputDecorationTheme.fillColor,
+                prefixIcon:
+                    Icon(Icons.search, color: theme.textTheme.bodyLarge?.color),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                focusedBorder: theme.inputDecorationTheme.focusedBorder,
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              children: [
+                _buildCard(theme, 'Solicitações de Emissões:', 'EMISSÕES'),
+                const SizedBox(height: 16),
+                _buildCard(
+                    theme, 'Solicitações de Transferência:', 'TRANSFERÊNCIAS'),
+                const SizedBox(height: 16),
+                _buildCard(
+                    theme, 'Solicitações Cancelamentos:', 'CANCELAMENTOS'),
+              ],
+            ),
           ),
         ],
       ),
@@ -127,7 +145,7 @@ class _AuditorScreenState extends State<AuditorScreen> {
             decoration: BoxDecoration(
               color: theme.cardColor,
               borderRadius: BorderRadius.circular(8),
-              boxShadow: [], // Removed box shadow to eliminate dark outline
+              boxShadow: [],
             ),
             alignment: Alignment.center,
             child: Text(

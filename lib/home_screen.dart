@@ -216,14 +216,13 @@ class _HomeScreenState extends State<HomeScreen> {
           context,
           MaterialPageRoute(
             builder: (context) => CertificadosScreen(
-              certificateNumber: certificateNumber,
-              device: 'Dispositivo XYZ', // Altere conforme necessário
-              capacity: '10kW', // Altere conforme necessário
-              emissions: '20gCO2/kWh', // Altere conforme necessário
-              lotNumber: 'Lote 123', // Altere conforme necessário
-              quantity: '100 unidades', // Altere conforme necessário
-              documentName: 'Certificado.pdf', // Altere conforme necessário
-            ),
+                certificateNumber: certificateNumber,
+                device: 'Dispositivo XYZ',
+                capacity: '10kW',
+                emissions: '20gCO2/kWh',
+                lotNumber: 'Lote 123',
+                quantity: '100 unidades',
+                documentName: 'Certificado.pdf'),
           ),
         );
       },
