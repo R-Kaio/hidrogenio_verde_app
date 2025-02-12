@@ -10,7 +10,7 @@ class TransferenciaScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: _buildAppBar(context, theme),
-      body: _buildBody(context, theme), // Passando o context para _buildBody
+      body: _buildBody(context, theme),
     );
   }
 
@@ -27,8 +27,7 @@ class TransferenciaScreen extends StatelessWidget {
       title: Text(
         'TRANSFERÊNCIA',
         style: theme.appBarTheme.titleTextStyle?.copyWith(
-          fontFamily: theme
-              .textTheme.bodyMedium?.fontFamily, // Usando a fonte do AppTheme
+          fontFamily: theme.textTheme.bodyMedium?.fontFamily,
         ),
       ),
       centerTitle: true,
@@ -39,8 +38,7 @@ class TransferenciaScreen extends StatelessWidget {
   // Corpo da tela
   Widget _buildBody(BuildContext context, ThemeData theme) {
     return Column(
-      mainAxisAlignment:
-          MainAxisAlignment.spaceBetween, // Espaço entre os widgets
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
           child: SingleChildScrollView(
@@ -58,7 +56,7 @@ class TransferenciaScreen extends StatelessWidget {
               // Solicitar transferência
               debugPrint('Solicitar Transferência');
             },
-            style: theme.elevatedButtonTheme.style, // Usando o estilo global
+            style: theme.elevatedButtonTheme.style,
             child: const Text('Solicitar Transferência'),
           ),
         ),
@@ -104,8 +102,7 @@ class TransferenciaScreen extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        color: theme.textTheme.bodyMedium?.color
-            ?.withValues(alpha: 178), // 70% opacidade
+        color: theme.textTheme.bodyMedium?.color?.withValues(alpha: 178),
         fontSize: 14,
         fontStyle: FontStyle.italic,
       ),

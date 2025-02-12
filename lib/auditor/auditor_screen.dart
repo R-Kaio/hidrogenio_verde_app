@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pendente_screen.dart';
+import 'verificacao_screen.dart';
 
 class AuditorScreen extends StatefulWidget {
   final VoidCallback onToggleTheme;
@@ -19,7 +20,7 @@ class _AuditorScreenState extends State<AuditorScreen> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-    if (index == 0 || index == 2) {
+    if (index == 0) {
       setState(() {
         _selectedIndex = index;
       });
@@ -33,6 +34,11 @@ class _AuditorScreenState extends State<AuditorScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => PendenteScreen()),
+      );
+    } else if (index == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => VerificacaoScreen()),
       );
     }
   }
